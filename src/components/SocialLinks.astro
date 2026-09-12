@@ -1,0 +1,49 @@
+---
+/**
+ * Profile and contact links. See Section 5.
+ *
+ * Renders only the links in SOCIAL_LINKS, which holds verified URLs. Missing
+ * profiles are omitted rather than linked to a guessed address; the outstanding
+ * ones are tracked in src/consts.ts and Section 23.
+ */
+import { SOCIAL_LINKS } from '~/consts';
+import { withBase } from '~/lib/paths';
+
+interface Props {
+  /** Appended after the profile links when a CV exists to point at. */
+  includeCv?: boolean;
+}
+
+const { includeCv = false } = Astro.props;
+---
+
+<ul class="social">
+  {
+    SOCIAL_LINKS.map((link) => (
+      <li>
+        <a href={link.href} rel="me noopener">
+          {link.label}
+        </a>
+      </li>
+    ))
+  }
+  {
+    includeCv && (
+      <li>
+        <a href={withBase('/cv')}>CV</a>
+      </li>
+    )
+  }
+</ul>
+
+<style>
+  .social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--space-unit) * 5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.95rem;
+  }
+</style>

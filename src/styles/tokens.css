@@ -1,0 +1,84 @@
+/*
+ * Design tokens. See Section 13 of the project plan.
+ *
+ * Theme tokens are redefined per color scheme. Layout tokens are not, which is
+ * why they live in a separate block: duplicating a width across two palettes
+ * only creates an opportunity for the two copies to drift apart.
+ */
+
+/* ---------- Layout tokens: scheme-independent ---------- */
+
+:root {
+  --max-width: 68rem;
+  --max-width-prose: 42rem;
+  --space-unit: 0.25rem;
+
+  --font-sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --font-mono:
+    ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+
+  --radius: 3px;
+  --border-width: 1px;
+}
+
+/* ---------- Theme tokens: light ---------- */
+
+:root {
+  color-scheme: light;
+
+  --background: #fdfdfc;
+  --surface: #f4f4f2;
+  --text: #1a1a18;
+  --text-muted: #56564f;
+  --border: #dcdcd6;
+  --accent: #1b4d7e;
+  --accent-muted: #e7eef6;
+  --link: #1b4d7e;
+  --link-visited: #58327c;
+  --focus-ring: #1b4d7e;
+}
+
+/*
+ * Theme tokens: dark.
+ *
+ * Declared twice on purpose, once for the explicit `dark` choice and once for
+ * the `system` state resolving to dark. The `:not([data-theme='light'])` guard
+ * is what keeps an explicit light choice from being overridden by a dark OS
+ * preference. The two selectors carry equal specificity, and the values are
+ * identical, so their relative order does not matter.
+ */
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --background: #131315;
+  --surface: #1c1c20;
+  --text: #e9e9e5;
+  --text-muted: #a3a39b;
+  --border: #33333b;
+  --accent: #7db3e8;
+  --accent-muted: #1d2936;
+  --link: #7db3e8;
+  --link-visited: #c1a9e1;
+  --focus-ring: #7db3e8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --background: #131315;
+    --surface: #1c1c20;
+    --text: #e9e9e5;
+    --text-muted: #a3a39b;
+    --border: #33333b;
+    --accent: #7db3e8;
+    --accent-muted: #1d2936;
+    --link: #7db3e8;
+    --link-visited: #c1a9e1;
+    --focus-ring: #7db3e8;
+  }
+}

@@ -1,0 +1,38 @@
+---
+/**
+ * A visibly marked placeholder. See Section 21a.
+ *
+ * Every placeholder renders a literal `TODO:` prefix so that the Slice 4 build
+ * gate can detect it in `dist` and fail the release. Do not write placeholder
+ * copy without going through this component, or it becomes invisible to the
+ * gate and can ship silently.
+ */
+interface Props {
+  /** What still needs to be supplied. */
+  note: string;
+}
+
+const { note } = Astro.props;
+---
+
+<p class="placeholder">
+  <strong>TODO:</strong>
+  {note}
+</p>
+
+<style>
+  .placeholder {
+    padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 4);
+    background-color: var(--accent-muted);
+    color: var(--text-muted);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    font-size: 0.925rem;
+  }
+
+  .placeholder strong {
+    color: var(--accent);
+    font-variant: all-small-caps;
+    letter-spacing: 0.06em;
+  }
+</style>

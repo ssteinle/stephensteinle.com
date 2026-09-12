@@ -1,0 +1,46 @@
+---
+/**
+ * Per-page metadata. See Section 17.
+ *
+ * Canonical and Open Graph URLs are resolved against `Astro.site`, which comes
+ * from `site` in astro.config.mjs. If that config were missing, these would
+ * silently emit relative values, so it is not optional.
+ */
+import { SITE } from '~/consts';
+import { withBase } from '~/lib/paths';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Overrides the site-wide fallback. Path or absolute URL. */
+  image?: string;
+}
+
+const { title, description = SITE.description, image = SITE.ogImage } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(withBase(image), Astro.site);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+<link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={SITE.title} />
+<meta property="og:locale" content={SITE.locale} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />

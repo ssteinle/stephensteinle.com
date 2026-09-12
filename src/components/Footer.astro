@@ -1,0 +1,38 @@
+---
+/**
+ * Site footer. Carries contact and profile links so no dedicated Contact page
+ * is needed. See Section 4.
+ */
+import SocialLinks from '~/components/SocialLinks.astro';
+import { SITE } from '~/consts';
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="shell bar">
+    <p class="copyright">&copy; {year} {SITE.title}</p>
+    <SocialLinks includeCv />
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: var(--border-width) solid var(--border);
+    background-color: var(--surface);
+  }
+
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(var(--space-unit) * 4);
+    padding-block: calc(var(--space-unit) * 6);
+  }
+
+  .copyright {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+</style>

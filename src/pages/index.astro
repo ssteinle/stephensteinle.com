@@ -1,0 +1,131 @@
+---
+/**
+ * Homepage. See Section 5.
+ *
+ * Establishes who Stephen is, what he researches, what he is working on, and
+ * where to find his work. The publication and project blocks are wired to
+ * content collections in Slices 2 and 3; here they are marked placeholders.
+ */
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SectionHeading from '~/components/SectionHeading.astro';
+import SocialLinks from '~/components/SocialLinks.astro';
+import Placeholder from '~/components/Placeholder.astro';
+import { SITE, AFFILIATION } from '~/consts';
+import { withBase } from '~/lib/paths';
+
+/**
+ * Research areas from Section 5. These are topic labels, not descriptions, so
+ * they state no findings and require no verification. Full descriptions live on
+ * the Research page and are a Phase 2 input.
+ */
+const researchAreas = [
+  'Large Language Model Reasoning',
+  'Cognitive Modeling of LLMs',
+  'Document Understanding',
+  'AI Agents',
+];
+---
+
+<BaseLayout title={SITE.homeTitle}>
+  <section class="hero">
+    <h1>Stephen Steinle</h1>
+    <p class="descriptor">
+      Ph.D. Researcher in Computer Science and Artificial Intelligence
+    </p>
+
+    <ul class="affiliation">
+      <li>{AFFILIATION.lab}</li>
+      <li>{AFFILIATION.college}</li>
+      <li>{AFFILIATION.university}</li>
+    </ul>
+
+    <SocialLinks includeCv />
+
+    <div class="bio prose">
+      <Placeholder
+        note="Professional biography. Two or three sentences covering research focus, current work, and background. Awaiting final wording."
+      />
+    </div>
+  </section>
+
+  <section>
+    <SectionHeading title="Current Research" href={withBase('/research')} linkLabel="All research" />
+    <ul class="areas">
+      {
+        researchAreas.map((area) => (
+          <li>
+            <a href={withBase('/research')}>{area}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section>
+    <SectionHeading title="Selected Publications" href={withBase('/publications')} linkLabel="All publications" />
+    <Placeholder
+      note="Selected publications. Renders from the publications collection once verified bibliographic metadata is added."
+    />
+  </section>
+
+  <section>
+    <SectionHeading title="Selected Projects" href={withBase('/projects')} linkLabel="All projects" />
+    <Placeholder
+      note="Selected projects. Renders from the projects collection once project descriptions are added."
+    />
+  </section>
+</BaseLayout>
+
+<style>
+  section + section {
+    margin-top: calc(var(--space-unit) * 16);
+  }
+
+  .hero h1 {
+    margin-bottom: calc(var(--space-unit) * 2);
+  }
+
+  .descriptor {
+    max-width: var(--max-width-prose);
+    color: var(--text);
+    font-size: 1.125rem;
+  }
+
+  .affiliation {
+    margin-block: calc(var(--space-unit) * 5);
+    padding: 0;
+    list-style: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .bio {
+    margin-top: calc(var(--space-unit) * 6);
+  }
+
+  .areas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: calc(var(--space-unit) * 3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .areas a {
+    display: block;
+    padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 4);
+    background-color: var(--surface);
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .areas a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>

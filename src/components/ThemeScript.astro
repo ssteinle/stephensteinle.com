@@ -1,0 +1,26 @@
+---
+/**
+ * Pre-paint theme application. See Section 14.
+ *
+ * `is:inline` is load-bearing. Astro would otherwise hoist this into a bundled
+ * module script, which defers execution until after first paint and produces a
+ * flash of the wrong theme on every navigation. It must stay inline and
+ * synchronous, and it must stay in <head> above any styled content.
+ */
+---
+
+<script is:inline>
+  (function () {
+    var root = document.documentElement;
+    var theme = 'system';
+    try {
+      var stored = localStorage.getItem('theme');
+      if (stored === 'light' || stored === 'dark' || stored === 'system') {
+        theme = stored;
+      }
+    } catch (err) {
+      /* localStorage can throw in private mode; fall back to system. */
+    }
+    root.dataset.theme = theme;
+  })();
+</script>

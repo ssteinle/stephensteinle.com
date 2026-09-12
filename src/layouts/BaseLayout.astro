@@ -1,0 +1,61 @@
+---
+/**
+ * The single global layout. See Section 11.
+ *
+ * Every page renders through this shell. Navigation and metadata are defined
+ * here once so no page can duplicate or drift from them.
+ */
+import BaseHead from '~/components/BaseHead.astro';
+import ThemeScript from '~/components/ThemeScript.astro';
+import Header from '~/components/Header.astro';
+import Footer from '~/components/Footer.astro';
+import '~/styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <ThemeScript />
+    <BaseHead title={title} description={description} image={image} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main" class="shell">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: calc(var(--space-unit) * 2);
+    left: calc(var(--space-unit) * 2);
+    z-index: 10;
+    padding: calc(var(--space-unit) * 2) calc(var(--space-unit) * 3);
+    background-color: var(--surface);
+    color: var(--text);
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius);
+    transform: translateY(-150%);
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+
+  main {
+    flex: 1;
+    padding-block: calc(var(--space-unit) * 12) calc(var(--space-unit) * 20);
+  }
+</style>

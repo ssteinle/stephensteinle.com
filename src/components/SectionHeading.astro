@@ -1,0 +1,52 @@
+---
+/**
+ * Section heading with an optional link to the corresponding full page.
+ * Keeps heading hierarchy consistent across pages. See Section 16.
+ */
+interface Props {
+  title: string;
+  /** Renders a "see all" style link beside the heading. */
+  href?: string;
+  linkLabel?: string;
+  /** Defaults to h2; pages set this to keep the hierarchy correct. */
+  level?: 2 | 3;
+}
+
+const { title, href, linkLabel = 'View all', level = 2 } = Astro.props;
+const Heading = `h${level}` as 'h2' | 'h3';
+---
+
+<div class="heading">
+  <Heading>{title}</Heading>
+  {
+    href && (
+      <a href={href}>
+        {linkLabel}
+        <span aria-hidden="true">&nbsp;&rarr;</span>
+      </a>
+    )
+  }
+</div>
+
+<style>
+  .heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: calc(var(--space-unit) * 3);
+    margin-bottom: calc(var(--space-unit) * 5);
+    padding-bottom: calc(var(--space-unit) * 2);
+    border-bottom: var(--border-width) solid var(--border);
+  }
+
+  .heading a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .heading a:hover {
+    text-decoration: underline;
+  }
+</style>

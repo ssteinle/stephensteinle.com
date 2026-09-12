@@ -1,0 +1,21 @@
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.production
+.env.local
+
+# Editor and OS
+.DS_Store
+*.swp
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-error.log*

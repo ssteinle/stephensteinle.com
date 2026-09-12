@@ -1,0 +1,154 @@
+---
+/**
+ * Primary navigation. See Sections 4 and 15.
+ *
+ * The mobile collapse uses a button with `aria-expanded` rather than a CSS-only
+ * checkbox. Section 15 prefers CSS-only, but a checkbox is announced as a
+ * checkbox rather than a disclosure, and `<details>` cannot be forced open for
+ * the desktop layout without JavaScript anyway. This is the second and final
+ * sanctioned exception to the no-client-JavaScript rule in Section 18.
+ *
+ * The markup degrades safely: with JavaScript unavailable the list renders
+ * expanded and the toggle stays hidden, so navigation is never trapped behind a
+ * button that cannot be pressed.
+ */
+import { NAV_ROUTES } from '~/consts';
+import { normalizePath, withBase } from '~/lib/paths';
+
+// Gating on collection contents lands in Slice 3, once the collections exist.
+const routes = NAV_ROUTES;
+const currentPath = normalizePath(Astro.url.pathname);
+---
+
+<nav id="site-nav" aria-label="Primary">
+  <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">
+    <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+    </svg>
+    Menu
+  </button>
+
+  <ul id="nav-list" class="nav-list">
+    {
+      routes.map((route) => {
+        const href = withBase(route.href);
+        const isCurrent = currentPath === normalizePath(href);
+        return (
+          <li>
+            <a href={href} aria-current={isCurrent ? 'page' : undefined}>
+              {route.label}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    gap: calc(var(--space-unit) * 2);
+    padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 2.5);
+    background-color: transparent;
+    color: var(--text-muted);
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+  }
+
+  .nav-toggle:hover {
+    color: var(--text);
+  }
+
+  .nav-toggle svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(var(--space-unit) * 6);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .nav-list a {
+    display: inline-block;
+    padding-block: calc(var(--space-unit) * 1);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .nav-list a:hover {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .nav-list a[aria-current='page'] {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  @media (max-width: 47.99em) {
+    /* `is-enhanced` is added by the script below, so the no-JS default is an
+       expanded list rather than an unreachable one. */
+    nav.is-enhanced {
+      display: block;
+      width: 100%;
+    }
+
+    nav.is-enhanced .nav-toggle {
+      display: inline-flex;
+    }
+
+    nav.is-enhanced .nav-list {
+      display: none;
+    }
+
+    nav.is-enhanced[data-open='true'] .nav-list {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      margin-top: calc(var(--space-unit) * 3);
+      border-top: var(--border-width) solid var(--border);
+    }
+
+    nav.is-enhanced .nav-list li + li {
+      border-top: var(--border-width) solid var(--border);
+    }
+
+    nav.is-enhanced .nav-list a {
+      padding-block: calc(var(--space-unit) * 3);
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var nav = document.getElementById('site-nav');
+    var button = document.getElementById('nav-toggle');
+    if (!nav || !button) return;
+
+    nav.classList.add('is-enhanced');
+    nav.dataset.open = 'false';
+
+    button.addEventListener('click', function () {
+      var open = nav.dataset.open === 'true';
+      nav.dataset.open = open ? 'false' : 'true';
+      button.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  })();
+</script>

@@ -1,0 +1,21 @@
+---
+/**
+ * CV page. Built properly in Slice 3 as an HTML CV with a PDF download link.
+ * This stub exists in Slice 1 so header links resolve. See Section 10.
+ *
+ * The PDF is deliberately not embedded. An HTML CV is accessible, indexable,
+ * and readable on a phone; an embedded PDF is none of those.
+ */
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Placeholder from '~/components/Placeholder.astro';
+---
+
+<BaseLayout
+  title="CV | Stephen Steinle"
+  description="Curriculum vitae for Stephen Steinle."
+>
+  <h1>CV</h1>
+  <div class="prose">
+    <Placeholder note="HTML curriculum vitae and the downloadable PDF at /cv/stephen-steinle-cv.pdf. Both are Phase 2 inputs; the PDF has not been supplied yet." />
+  </div>
+</BaseLayout>

@@ -1,0 +1,105 @@
+---
+/**
+ * Three-state theme control: system -> light -> dark -> system.
+ * See Section 14.
+ *
+ * Which icon shows is decided by CSS from the `data-theme` attribute that the
+ * pre-paint script already set, so the correct icon is painted on the first
+ * frame without JavaScript. The script below only handles the click and keeps
+ * the accessible label in sync.
+ */
+---
+
+<button id="theme-toggle" type="button" aria-live="polite" aria-label="Change color theme">
+  <svg class="icon icon-system" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+    <rect x="1.5" y="2.5" width="13" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"></rect>
+    <path d="M5.5 14h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
+  </svg>
+  <svg class="icon icon-light" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+    <circle cx="8" cy="8" r="3.1" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
+    <path
+      d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3.05 3.05l1.13 1.13M11.82 11.82l1.13 1.13M12.95 3.05l-1.13 1.13M4.18 11.82l-1.13 1.13"
+      stroke="currentColor"
+      stroke-width="1.4"
+      stroke-linecap="round"></path>
+  </svg>
+  <svg class="icon icon-dark" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+    <path
+      d="M13.2 10.4A5.6 5.6 0 0 1 5.6 2.8a5.6 5.6 0 1 0 7.6 7.6Z"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.4"
+      stroke-linejoin="round"></path>
+  </svg>
+</button>
+
+<style>
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    background-color: transparent;
+    color: var(--text-muted);
+    border: var(--border-width) solid transparent;
+    border-radius: var(--radius);
+  }
+
+  button:hover {
+    color: var(--text);
+    background-color: var(--surface);
+    border-color: var(--border);
+  }
+
+  .icon {
+    display: none;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /* The attribute is set pre-paint, so exactly one icon is visible on frame 1. */
+  :root[data-theme='system'] .icon-system,
+  :root:not([data-theme]) .icon-system,
+  :root[data-theme='light'] .icon-light,
+  :root[data-theme='dark'] .icon-dark {
+    display: block;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var button = document.getElementById('theme-toggle');
+    if (!button) return;
+
+    var order = ['system', 'light', 'dark'];
+    var labels = {
+      system: 'Color theme: follow system. Activate for light.',
+      light: 'Color theme: light. Activate for dark.',
+      dark: 'Color theme: dark. Activate to follow system.',
+    };
+
+    function current() {
+      var value = document.documentElement.dataset.theme;
+      return order.indexOf(value) === -1 ? 'system' : value;
+    }
+
+    function render() {
+      button.setAttribute('aria-label', labels[current()]);
+    }
+
+    button.addEventListener('click', function () {
+      var next = order[(order.indexOf(current()) + 1) % order.length];
+      document.documentElement.dataset.theme = next;
+      try {
+        localStorage.setItem('theme', next);
+      } catch (err) {
+        /* Persistence is best effort; the in-page choice still applies. */
+      }
+      render();
+    });
+
+    render();
+  })();
+</script>
