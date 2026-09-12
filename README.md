@@ -4,6 +4,8 @@ Personal site of Stephen Steinle. Built with [Astro](https://astro.build) and de
 
 **Live preview:** https://ssteinle.github.io/stephensteinle.com/
 
+The HTML at the repository root (`index.html`, `_astro/`, and the route folders) is the generated GitHub Pages build. Edit files under `src/` and rebuild; do not edit those root HTML files by hand.
+
 ## Local development
 
 Requires Node 24 (see `.nvmrc`).
