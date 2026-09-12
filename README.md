@@ -4,7 +4,9 @@ Personal site of Stephen Steinle. Built with [Astro](https://astro.build) and de
 
 **Live preview:** https://ssteinle.github.io/stephensteinle.com/
 
-The HTML at the repository root (`index.html`, `_astro/`, and the route folders) is the generated GitHub Pages build. Edit files under `src/` and rebuild; do not edit those root HTML files by hand.
+Website source lives under `src/`, and static assets live under `public/`. Generated output lives in `dist/` and is not committed.
+
+The project architecture and implementation plan are in [PROJECT_PLAN.md](PROJECT_PLAN.md).
 
 ## Local development
 
@@ -12,7 +14,7 @@ Requires Node 24 (see `.nvmrc`).
 
 ```bash
 nvm use
-npm install
+npm ci
 npm run dev
 ```
 
@@ -23,4 +25,6 @@ npm run build    # production build → dist/
 npm run preview  # serve the production build
 ```
 
-Production hosting on `stephensteinle.com` via Cloudflare Pages is the later target. Until then, pushes to `main` publish to GitHub Pages.
+GitHub Actions builds the preview site and deploys the generated `dist/` output to GitHub Pages on pushes to `main`. The current preview is [ssteinle.github.io/stephensteinle.com](https://ssteinle.github.io/stephensteinle.com/).
+
+The future production target is `stephensteinle.com` on Cloudflare Pages.
