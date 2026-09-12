@@ -7,15 +7,16 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
-    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
-    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
-    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "dev": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "check": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro check",
     "assets": "node scripts/generate-assets.mjs"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "astro": "^5.15.6",
+    "cross-env": "^10.1.0",
     "typescript": "^5.9.3"
   }
 }
