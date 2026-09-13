@@ -1,19 +1,21 @@
 ---
-/**
- * Teaching page. Built properly in Slice 3 against the teaching collection,
- * with the current/previous split derived from `term`. This stub exists in
- * Slice 1 so header links resolve. See Section 9.
- */
+import { getCollection } from 'astro:content';
 import BaseLayout from '~/layouts/BaseLayout.astro';
-import Placeholder from '~/components/Placeholder.astro';
+import { termLabel } from '~/lib/content';
+const courses = (await getCollection('teaching', ({ data }) => !data.draft)).sort((a, b) => b.data.term.localeCompare(a.data.term));
 ---
-
-<BaseLayout
-  title="Teaching | Stephen Steinle"
-  description="Courses taught by Stephen Steinle at the University of South Florida."
->
+<BaseLayout title="Teaching | Stephen Steinle" description="Stephen Steinle's teaching assistant appointments at the University of South Florida.">
   <h1>Teaching</h1>
-  <div class="prose">
-    <Placeholder note="Course list. Renders from the teaching collection in Slice 3, starting with Introduction to AI Math, Fall 2026." />
-  </div>
+  <ul class="entry-list">
+    {courses.map(({ id, data }) => (
+      <li id={id}>
+        <article>
+          <p class="eyebrow">{termLabel(data.term)}</p>
+          <h2>{data.course}</h2>
+          <p class="entry-description">{data.role}</p>
+          <p class="entry-meta">{data.institution}</p>
+        </article>
+      </li>
+    ))}
+  </ul>
 </BaseLayout>

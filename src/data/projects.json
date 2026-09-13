@@ -1,0 +1,63 @@
+[
+  {
+    "id": "curiosity-exploration",
+    "name": "Curiosity Exploration",
+    "context": "Research software | CogSci 2025",
+    "description": "Semantic graph analysis for comparing patterns of human exploration in Chain Free Association and Semantic Fluency tasks. The companion repository supports the study of cross-task exploration styles.",
+    "technologies": ["Natural language processing", "Graph analysis", "Cognitive modeling"],
+    "repository": "https://github.com/Advancing-Machine-Human-Reasoning-Lab/curiosity-exploration",
+    "publication": "curiosity-exploration",
+    "research": "cognitive-modeling",
+    "selected": true,
+    "order": 1
+  },
+  {
+    "id": "persona-heuristic-mapping",
+    "name": "Persona Heuristic Mapping",
+    "context": "Research project | Strategic game evaluation",
+    "description": "An evaluation pipeline that translates persona descriptions through psychometric inventories into measurable trait profiles. Tournament protocols and behavior metrics test whether persona conditioning produces consistent shifts across prompts and model variants.",
+    "technologies": ["LLM evaluation", "Psychometrics", "Statistical analysis"],
+    "publication": "persona-strategic-reasoning",
+    "research": "persona-evaluation",
+    "selected": true,
+    "order": 2
+  },
+  {
+    "id": "developer-search",
+    "name": "Developer Search and MCP Integration",
+    "context": "Amazon Ring | Software Development Internship, 2025",
+    "description": "Repository and documentation search combining LLM-expanded keyword retrieval with document summaries. An MCP service enabled Cursor to generate OpenSearch queries and surface keyword-usage summaries across code and internal documentation.",
+    "technologies": ["OpenSearch", "MCP", "Cursor", "LLM-assisted retrieval"],
+    "selected": true,
+    "order": 3
+  },
+  {
+    "id": "legal-retrieval-entailment",
+    "name": "Legal Retrieval and Entailment",
+    "context": "Research project | Legal NLP",
+    "description": "Retrieval and retrieval-augmented generation pipelines for large case corpora, including segmentation, indexing, query-focused retrieval, and citation-grounded answer synthesis. Evaluation tracks faithfulness, citation coverage, and entailment errors.",
+    "technologies": ["Retrieval-augmented generation", "Indexing", "NLP evaluation"],
+    "publication": "coliee-2024",
+    "research": "legal-retrieval",
+    "order": 4
+  },
+  {
+    "id": "grammar-constrained-decoding",
+    "name": "Grammar-Constrained Code Generation",
+    "context": "Research project | FLAIRS 2023",
+    "description": "A constraint layer for transformer code generation that filters token choices using a formal grammar and allowed constructs. Experiments examine constraint strictness, syntactic validity, and exact-match behavior.",
+    "technologies": ["Transformers", "Formal grammars", "Constrained decoding"],
+    "publication": "grammar-code-synthesis",
+    "research": "constrained-generation",
+    "order": 5
+  },
+  {
+    "id": "action-legality",
+    "name": "Natural Language Action Legality",
+    "context": "Air Force Research Laboratory | Machine Learning Internship, 2023",
+    "description": "A system that maps natural-language utterances into structured actions and determines whether they are permitted by a ruleset and the current game state.",
+    "technologies": ["Natural language processing", "Rule-based reasoning", "Structured actions"],
+    "research": "strategic-reasoning",
+    "order": 6
+  }
+]

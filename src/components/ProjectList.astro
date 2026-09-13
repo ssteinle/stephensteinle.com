@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { withBase } from '~/lib/paths';
+interface Props { projects: CollectionEntry<'projects'>[]; }
+const { projects } = Astro.props;
+---
+
+<ul class="entry-list">
+  {projects.map(({ id, data: project }) => (
+    <li id={id}>
+      <article>
+        <p class="entry-meta">{project.context}</p>
+        <h3>{project.name}</h3>
+        <p class="entry-description">{project.description}</p>
+        <p class="entry-meta">{project.technologies.join(' · ')}</p>
+        <ul class="inline-links">
+          {project.repository && <li><a href={project.repository}>Source code</a></li>}
+          {project.publication && <li><a href={`${withBase('/publications')}#${project.publication.id}`}>Publication</a></li>}
+          {project.research && <li><a href={`${withBase('/research')}#${project.research.id}`}>Related research</a></li>}
+        </ul>
+      </article>
+    </li>
+  ))}
+</ul>

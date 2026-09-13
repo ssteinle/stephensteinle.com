@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { AUTHOR_SELF } from '~/consts';
+import { publicationBibtex } from '~/lib/content';
+
+interface Props {
+  publications: CollectionEntry<'publications'>[];
+  compact?: boolean;
+}
+const { publications, compact = false } = Astro.props;
+---
+
+<ol class="entry-list publication-list">
+  {publications.map((entry) => {
+    const p = entry.data;
+    return (
+      <li id={compact ? undefined : entry.id}>
+        <article>
+          <h3><a href={p.url}>{p.title}</a></h3>
+          <p class="authors">{p.authors.map((author, index) => (
+            <Fragment>{index > 0 && ', '}{AUTHOR_SELF.some((name) => name === author) ? <strong>{author}</strong> : author}</Fragment>
+          ))}</p>
+          <p class="entry-meta">{p.venue} · {p.year}{p.pages && ` · pp. ${p.pages}`}</p>
+          {!compact && <p class="entry-description">{p.summary}</p>}
+          {!compact && p.note && <p class="entry-meta">{p.note}</p>}
+          <ul class="inline-links">
+            {p.doi && <li><a href={`https://doi.org/${p.doi}`}>DOI</a></li>}
+            {p.pdf && <li><a href={p.pdf}>PDF</a></li>}
+            {p.code && <li><a href={p.code}>Code</a></li>}
+          </ul>
+          {!compact && <details class="citation"><summary>BibTeX</summary><pre><code>{publicationBibtex(entry)}</code></pre></details>}
+        </article>
+      </li>
+    );
+  })}
+</ol>
+
+<style>
+  .authors { margin-top: 0.5rem; font-size: 0.95rem; }
+  .citation { margin-top: 0.75rem; }
+  summary { width: fit-content; cursor: pointer; color: var(--link); font-size: 0.9rem; }
+  pre { margin-top: 0.75rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+</style>

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "persona-strategic-reasoning",
+    "title": "Do Persona-Infused LLMs Affect Performance in a Strategic Reasoning Game?",
+    "authors": ["John Licato", "Stephen Steinle", "Brayden Hollis"],
+    "venue": "IJCNLP-AACL 2025",
+    "year": 2025,
+    "type": "conference",
+    "pages": "3497-3528",
+    "url": "https://aclanthology.org/2025.ijcnlp-long.186/",
+    "doi": "10.18653/v1/2025.ijcnlp-long.186",
+    "pdf": "https://aclanthology.org/2025.ijcnlp-long.186.pdf",
+    "summary": "Tests whether persona prompts affect strategic play in PERIL. A psychometric translation step maps personality-inventory responses into game heuristics, making it possible to compare persona-conditioned strategies with manually chosen ones.",
+    "selected": true
+  },
+  {
+    "id": "curiosity-exploration",
+    "title": "Curiosity Exploration Styles in Word Association Tasks",
+    "authors": ["Stephen Steinle", "My Duong", "Suraj Kumar", "Rima El Brouzi", "John Licato"],
+    "venue": "Proceedings of the 47th Annual Meeting of the Cognitive Science Society (CogSci)",
+    "year": 2025,
+    "type": "conference",
+    "url": "https://escholarship.org/uc/item/9ws069q4",
+    "code": "https://github.com/Advancing-Machine-Human-Reasoning-Lab/curiosity-exploration",
+    "summary": "Uses semantic graphs to study exploration styles across Chain Free Association and Semantic Fluency tasks. The results identify cross-task patterns in some graph features and provide evidence for the dancer exploration style.",
+    "selected": true
+  },
+  {
+    "id": "fatigue-measures-models",
+    "title": "A survey of fatigue measures and models",
+    "authors": ["Antonio Laverghetta Jr.", "Minh Tran", "Alec Braynen", "Stephen Steinle", "Bekhzodbek Moydinboyev", "Heba Daas", "John Licato"],
+    "venue": "The Journal of Defense Modeling and Simulation, 22(2)",
+    "year": 2025,
+    "type": "journal",
+    "pages": "147-173",
+    "url": "https://doi.org/10.1177/15485129231158580",
+    "doi": "10.1177/15485129231158580",
+    "note": "First published online in March 2023; journal issue published in April 2025.",
+    "summary": "Reviews behavioral, physiological, and cognitive approaches to measuring and modeling fatigue, with attention to model selection and opportunities for combining multiple kinds of evidence."
+  },
+  {
+    "id": "shot-selection",
+    "title": "Shot Selection to Determine Legality of Actions in a Rule-Heavy Environment",
+    "authors": ["John Licato", "Logan Fields", "Stephen Steinle", "Brayden Hollis"],
+    "venue": "2024 IEEE Conference on Games (CoG)",
+    "year": 2024,
+    "type": "conference",
+    "pages": "1-8",
+    "url": "https://doi.org/10.1109/CoG60054.2024.10645668",
+    "doi": "10.1109/CoG60054.2024.10645668",
+    "summary": "Studies example selection for determining whether proposed actions are legal in an environment governed by a detailed set of rules."
+  },
+  {
+    "id": "coliee-2024",
+    "title": "AMHR COLIEE 2024 Entry: Legal Entailment and Retrieval",
+    "authors": ["Animesh Nighojkar", "Kenneth Jiang", "Logan Fields", "Onur Bilgin", "Stephen Steinle", "Yernar Sadybekov", "Zaid Marji", "John Licato"],
+    "venue": "New Frontiers in Artificial Intelligence, JSAI-isAI 2024, LNCS 14741",
+    "year": 2024,
+    "type": "conference",
+    "pages": "200-211",
+    "url": "https://link.springer.com/chapter/10.1007/978-981-97-3076-6_14",
+    "doi": "10.1007/978-981-97-3076-6_14",
+    "summary": "Presents the AMHR team's approaches to legal case entailment, statute retrieval, and textual entailment. The team's monoT5 approach with hard-negative mining won Task 2 of COLIEE 2024.",
+    "selected": true
+  },
+  {
+    "id": "legal-prompting",
+    "title": "Exploring Prompting Approaches in Legal Textual Entailment",
+    "authors": ["Onur Bilgin", "Logan Fields", "Antonio Laverghetta Jr.", "Zaid Marji", "Animesh Nighojkar", "Stephen Steinle", "John Licato"],
+    "venue": "The Review of Socionetwork Strategies, 18(1)",
+    "year": 2024,
+    "type": "journal",
+    "pages": "75-100",
+    "url": "https://link.springer.com/article/10.1007/s12626-023-00154-y",
+    "doi": "10.1007/s12626-023-00154-y",
+    "pdf": "https://par.nsf.gov/servlets/purl/10535280",
+    "summary": "Evaluates retrieval-based prompting and model ensembles for COLIEE 2023 legal textual entailment, using GPT-4 and Flan-T5 without task-specific fine-tuning."
+  },
+  {
+    "id": "grammar-code-synthesis",
+    "title": "Enforcing Grammar in Code Synthesis with Transformers",
+    "authors": ["Dmytro Vitel", "Stephen Steinle", "John Licato"],
+    "venue": "The International FLAIRS Conference Proceedings, 36",
+    "year": 2023,
+    "type": "conference",
+    "url": "https://doi.org/10.32473/flairs.36.133363",
+    "doi": "10.32473/flairs.36.133363",
+    "summary": "Introduces a grammar-enforcement layer for transformer code generation and evaluates syntactic correctness and exact-match behavior on the Hearthstone dataset."
+  }
+]
