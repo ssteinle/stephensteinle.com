@@ -14,7 +14,21 @@
   ],
   "experience": [
     {"role": "Graduate Research Assistant", "organization": "AMHR Lab, University of South Florida", "dates": "August 2022 - Present", "details": ["Develop NLP and large language model methods for strategic dialogue, including stance, goal, and strategy inference from conversational context.", "Design controlled reasoning evaluations to identify the effects of missing information, constraints, and prompting assumptions."]},
-    {"role": "Software Development Intern", "organization": "Amazon Ring", "dates": "August - November 2025", "details": ["Built repository and documentation search using LLM-expanded keyword retrieval and query-focused document summaries.", "Implemented an MCP service connecting Cursor with OpenSearch queries and keyword-usage summaries."]},
+    {
+      "role": "Software Development Engineer (Internship)",
+      "organization": "Amazon | Hawthorne, California, United States | On-site",
+      "dates": "June - September 2026 (4 months)",
+      "details": [
+        "Built a Python/AWS pipeline that evaluates AI coding-agent sessions, identifies failure patterns, generates corrective lessons, validates them through A/B replay experiments, and publishes approved lessons back into agent memory.",
+        "Developed a multi-stage evaluator for AI coding-agent sessions, combining deterministic transcript parsing with LLM-based classification and structured JSON validation.",
+        "Built failure-detection workflows to identify stumbles in tool-use cycles, extract surrounding context, and classify behavior with confidence scoring.",
+        "Implemented a learner pipeline that converts failures into lessons, clusters recurring patterns using embeddings, TF-IDF, and HDBSCAN, and synthesizes canonical guidance.",
+        "Designed A/B replay validation to compare control vs. lesson-injected agent behavior, measuring prevention-rate deltas with statistical tests and confidence intervals.",
+        "Resulted in a favorable internship evaluation and an inclination to hire.",
+        "Technologies: Bedrock, S3, DynamoDB, CloudWatch, EventBridge, ECS Fargate, and AgentCore Memory."
+      ]
+    },
+    {"role": "Software Development Engineer (Internship)", "organization": "Amazon Ring", "dates": "August - November 2025", "details": ["Built repository and documentation search using LLM-expanded keyword retrieval and query-focused document summaries.", "Implemented an MCP service connecting Cursor with OpenSearch queries and keyword-usage summaries."]},
     {"role": "Application Developer Intern", "organization": "CACI Inc.", "dates": "May 2022 - March 2024", "details": ["Implemented anomaly-detection workflows over vehicle traffic data to support investigation and triage."]},
     {"role": "Machine Learning Intern", "organization": "Air Force Research Laboratory", "dates": "May - August 2023", "details": ["Built a natural-language action legality system that maps utterances to structured actions and checks permissibility against a ruleset and game state."]},
     {"role": "Cryptologic Technician Networks", "organization": "United States Navy", "dates": "October 2014 - August 2021", "details": ["Performed cyber intelligence and cybersecurity operations, including incident response and network auditing."]}
