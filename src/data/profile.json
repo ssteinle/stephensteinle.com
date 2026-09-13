@@ -5,8 +5,15 @@
   "email": "ssteinle@usf.edu",
   "bio": [
     "I am a computer science Ph.D. student in the Advancing Machine and Human Reasoning Lab at the University of South Florida. My research focuses on conversational strategic reasoning, natural language processing, and cognitive modeling: how people and language models reason, explore ideas, and make decisions.",
-    "My work spans persona-based evaluation, semantic exploration, legal retrieval and entailment, and syntax-guided code generation. I also bring applied experience from Amazon Ring, the Air Force Research Laboratory, and CACI, alongside seven years of service in the United States Navy."
+    "My work spans persona-based evaluation, semantic exploration, legal retrieval and entailment, and syntax-guided code generation. I also bring applied experience from Amazon, the Air Force Research Laboratory, and CACI, alongside seven years of service in the United States Navy."
   ],
+  "currentWork": {
+    "role": "Software Development Engineer Intern",
+    "organization": "Amazon",
+    "location": "Hawthorne, California",
+    "dates": "June–September 2026",
+    "summary": "I built a Python/AWS pipeline that evaluates AI coding-agent sessions, identifies failure patterns, generates corrective lessons, validates them through A/B replay experiments, and publishes approved lessons back into agent memory."
+  },
   "education": [
     {"degree": "Ph.D., Computer Science", "institution": "University of South Florida", "date": "Expected May 2027"},
     {"degree": "B.S., Computer Science", "institution": "Dakota State University", "date": "May 2022"},

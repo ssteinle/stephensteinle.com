@@ -26,6 +26,14 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft && d
     <SocialLinks includeCv />
     <div class="bio prose">{profile.bio.map((paragraph) => <p>{paragraph}</p>)}</div>
   </section>
+  {profile.currentWork && (
+    <section class="page-section">
+      <SectionHeading title="Recent work" href={withBase('/cv')} linkLabel="Full CV" />
+      <p class="eyebrow">{profile.currentWork.organization} &middot; {profile.currentWork.location} &middot; {profile.currentWork.dates}</p>
+      <h3 class="current-role">{profile.currentWork.role}</h3>
+      <p class="prose">{profile.currentWork.summary}</p>
+    </section>
+  )}
   <section class="page-section">
     <SectionHeading title="Research" href={withBase('/research')} linkLabel="All research" />
     <ul class="research-links">
@@ -47,5 +55,6 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft && d
   .affiliation { margin-block: 1.25rem; padding: 0; list-style: none; color: var(--text-muted); font-size: 0.95rem; }
   .bio { margin-top: 1.5rem; }
   .bio p + p { margin-top: 1rem; }
+  .current-role { margin-block: 0.35rem 0.75rem; font-size: 1.125rem; }
   .research-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem 2rem; padding-left: 1.25rem; }
 </style>
