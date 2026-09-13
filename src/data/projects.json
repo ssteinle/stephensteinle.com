@@ -1,5 +1,14 @@
 [
   {
+    "id": "agent-lesson-pipeline",
+    "name": "Coding-Agent Evaluation and Lessons",
+    "context": "Amazon | Software Development Internship, 2026",
+    "description": "A Python/AWS pipeline that evaluates AI coding-agent sessions, identifies failure patterns in tool-use cycles, clusters recurring mistakes, and generates corrective lessons. Approved lessons are validated with A/B replay experiments and written back into agent memory.",
+    "technologies": ["Bedrock", "ECS Fargate", "Embeddings", "A/B replay"],
+    "selected": true,
+    "order": 1
+  },
+  {
     "id": "curiosity-exploration",
     "name": "Curiosity Exploration",
     "context": "Research software | CogSci 2025",
@@ -9,7 +18,7 @@
     "publication": "curiosity-exploration",
     "research": "cognitive-modeling",
     "selected": true,
-    "order": 1
+    "order": 2
   },
   {
     "id": "persona-heuristic-mapping",
@@ -20,7 +29,7 @@
     "publication": "persona-strategic-reasoning",
     "research": "persona-evaluation",
     "selected": true,
-    "order": 2
+    "order": 3
   },
   {
     "id": "developer-search",
@@ -28,8 +37,7 @@
     "context": "Amazon Ring | Software Development Internship, 2025",
     "description": "Repository and documentation search combining LLM-expanded keyword retrieval with document summaries. An MCP service enabled Cursor to generate OpenSearch queries and surface keyword-usage summaries across code and internal documentation.",
     "technologies": ["OpenSearch", "MCP", "Cursor", "LLM-assisted retrieval"],
-    "selected": true,
-    "order": 3
+    "order": 4
   },
   {
     "id": "legal-retrieval-entailment",
@@ -39,7 +47,7 @@
     "technologies": ["Retrieval-augmented generation", "Indexing", "NLP evaluation"],
     "publication": "coliee-2024",
     "research": "legal-retrieval",
-    "order": 4
+    "order": 5
   },
   {
     "id": "grammar-constrained-decoding",
@@ -49,7 +57,7 @@
     "technologies": ["Transformers", "Formal grammars", "Constrained decoding"],
     "publication": "grammar-code-synthesis",
     "research": "constrained-generation",
-    "order": 5
+    "order": 6
   },
   {
     "id": "action-legality",
@@ -58,6 +66,6 @@
     "description": "A system that maps natural-language utterances into structured actions and determines whether they are permitted by a ruleset and the current game state.",
     "technologies": ["Natural language processing", "Rule-based reasoning", "Structured actions"],
     "research": "strategic-reasoning",
-    "order": 6
+    "order": 7
   }
 ]
