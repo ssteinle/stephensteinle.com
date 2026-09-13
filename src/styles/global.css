@@ -41,16 +41,16 @@ h3,
 h4 {
   line-height: 1.2;
   font-weight: 650;
-  letter-spacing: -0.011em;
+  letter-spacing: 0;
   text-wrap: balance;
 }
 
 h1 {
-  font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.35rem);
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: clamp(1.3rem, 1.15rem + 0.7vw, 1.55rem);
+  font-size: 1.5rem;
 }
 
 h3 {
@@ -162,6 +162,26 @@ hr {
 
 .prose {
   max-width: var(--max-width-prose);
+}
+
+.page-intro { margin-top: 1.25rem; }
+.page-section { margin-top: 3rem; scroll-margin-top: 2rem; }
+.eyebrow { font-size: 0.875rem; color: var(--text-muted); }
+.entry-list { list-style: none; margin: 1.5rem 0 0; padding: 0; }
+.entry-list > li { padding-block: 1.5rem; border-top: 1px solid var(--border); scroll-margin-top: 2rem; }
+.entry-list h3 { line-height: 1.4; }
+.entry-meta { font-size: 0.9rem; color: var(--text-muted); }
+.entry-meta + h3 { margin-top: 0.25rem; }
+.entry-description { margin-block: 0.75rem; max-width: var(--max-width-prose); }
+.inline-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; list-style: none; padding: 0; margin-top: 0.75rem; font-size: 0.9rem; }
+.inline-links:empty { display: none; }
+
+@media print {
+  header, footer, .skip-link { display: none; }
+  body { background: white; color: black; }
+  a { color: inherit; }
+  .page-section { margin-top: 1.5rem; }
+  .entry-list > li { break-inside: avoid; }
 }
 
 .visually-hidden {

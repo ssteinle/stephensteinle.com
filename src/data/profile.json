@@ -1,0 +1,34 @@
+{
+  "name": "Stephen Steinle",
+  "role": "Ph.D. Student in Computer Science",
+  "location": "Tampa, Florida",
+  "email": "ssteinle@usf.edu",
+  "bio": [
+    "I am a computer science Ph.D. student in the Advancing Machine and Human Reasoning Lab at the University of South Florida. My research focuses on conversational strategic reasoning, natural language processing, and cognitive modeling: how people and language models reason, explore ideas, and make decisions.",
+    "My work spans persona-based evaluation, semantic exploration, legal retrieval and entailment, and syntax-guided code generation. I also bring applied experience from Amazon Ring, the Air Force Research Laboratory, and CACI, alongside seven years of service in the United States Navy."
+  ],
+  "education": [
+    {"degree": "Ph.D., Computer Science", "institution": "University of South Florida", "date": "Expected May 2027"},
+    {"degree": "B.S., Computer Science", "institution": "Dakota State University", "date": "May 2022"},
+    {"degree": "B.S., Information Technology", "institution": "University of South Florida", "date": "December 2018"}
+  ],
+  "experience": [
+    {"role": "Graduate Research Assistant", "organization": "AMHR Lab, University of South Florida", "dates": "August 2022 - Present", "details": ["Develop NLP and large language model methods for strategic dialogue, including stance, goal, and strategy inference from conversational context.", "Design controlled reasoning evaluations to identify the effects of missing information, constraints, and prompting assumptions."]},
+    {"role": "Software Development Intern", "organization": "Amazon Ring", "dates": "August - November 2025", "details": ["Built repository and documentation search using LLM-expanded keyword retrieval and query-focused document summaries.", "Implemented an MCP service connecting Cursor with OpenSearch queries and keyword-usage summaries."]},
+    {"role": "Application Developer Intern", "organization": "CACI Inc.", "dates": "May 2022 - March 2024", "details": ["Implemented anomaly-detection workflows over vehicle traffic data to support investigation and triage."]},
+    {"role": "Machine Learning Intern", "organization": "Air Force Research Laboratory", "dates": "May - August 2023", "details": ["Built a natural-language action legality system that maps utterances to structured actions and checks permissibility against a ruleset and game state."]},
+    {"role": "Cryptologic Technician Networks", "organization": "United States Navy", "dates": "October 2014 - August 2021", "details": ["Performed cyber intelligence and cybersecurity operations, including incident response and network auditing."]}
+  ],
+  "skills": [
+    {"area": "Machine learning and NLP", "items": ["Python", "PyTorch", "Transformers", "Retrieval-augmented generation"]},
+    {"area": "Search and data systems", "items": ["OpenSearch", "Indexing", "Query construction", "Data pipelines"]},
+    {"area": "Engineering", "items": ["Linux", "Git", "Docker", "AWS", "Bedrock", "IAM"]},
+    {"area": "Tools", "items": ["Cursor", "Retool", "MCP"]},
+    {"area": "Research methods", "items": ["Psychometrics", "Cognitive modeling", "Statistical analysis"]}
+  ],
+  "honors": [
+    {"name": "Sloan Scholarship", "date": "2025"},
+    {"name": "USF Graduate Fellowship", "date": "2023-2024"}
+  ],
+  "service": ["United States Navy veteran", "Founding member, Society of American Military Engineers, USF Post"]
+}

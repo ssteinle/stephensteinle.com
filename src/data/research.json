@@ -1,0 +1,42 @@
+[
+  {
+    "id": "strategic-reasoning",
+    "title": "Strategic Reasoning and Language Models",
+    "question": "How do language models reason about goals, strategies, and rules in interactive settings?",
+    "description": "My research examines strategic dialogue, including inference of stance, goals, and strategy from conversational context. I design controlled evaluations to distinguish failures caused by missing information, constraints, and prompting assumptions, with strategic games providing a setting for studying decisions under explicit rules.",
+    "publications": ["persona-strategic-reasoning", "shot-selection"],
+    "order": 1
+  },
+  {
+    "id": "persona-evaluation",
+    "title": "Persona Conditioning and Psychometrics",
+    "question": "When does a persona change a model's behavior, rather than just its language?",
+    "description": "I use psychometric inventories to translate persona descriptions into measurable trait profiles and strategic heuristics. This work examines the consistency of persona-conditioned behavior across prompts and model variants, and how those differences relate to performance in a strategic game.",
+    "publications": ["persona-strategic-reasoning"],
+    "order": 2
+  },
+  {
+    "id": "cognitive-modeling",
+    "title": "Cognitive Modeling and Semantic Exploration",
+    "question": "What can patterns in word association tell us about how people explore ideas?",
+    "description": "My work combines natural language processing and graph analysis to characterize individual exploration styles across word-association tasks. Related collaborative work surveys behavioral, physiological, and cognitive measures of fatigue.",
+    "publications": ["curiosity-exploration", "fatigue-measures-models"],
+    "order": 3
+  },
+  {
+    "id": "legal-retrieval",
+    "title": "Document Retrieval and Legal Reasoning",
+    "question": "How can retrieval and prompting support answers grounded in legal evidence?",
+    "description": "I build retrieval and answer-synthesis pipelines over case corpora, from document segmentation and indexing to query-focused retrieval. Evaluation includes faithfulness, citation coverage, retrieval failures, and entailment mismatches. This work connects to the AMHR team's legal retrieval and entailment research in COLIEE.",
+    "publications": ["coliee-2024", "legal-prompting"],
+    "order": 4
+  },
+  {
+    "id": "constrained-generation",
+    "title": "Syntax-Guided Code Generation",
+    "question": "How can explicit grammar constraints improve generated code?",
+    "description": "I have worked on grammar-constrained transformer code synthesis, using a separate constraint layer to restrict token choices according to a formal grammar. Evaluation examines syntactic validity, exact-match behavior, and the failure modes introduced by different constraint settings.",
+    "publications": ["grammar-code-synthesis"],
+    "order": 5
+  }
+]

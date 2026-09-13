@@ -1,21 +1,59 @@
 ---
-/**
- * CV page. Built properly in Slice 3 as an HTML CV with a PDF download link.
- * This stub exists in Slice 1 so header links resolve. See Section 10.
- *
- * The PDF is deliberately not embedded. An HTML CV is accessible, indexable,
- * and readable on a phone; an embedded PDF is none of those.
- */
+import { getCollection } from 'astro:content';
 import BaseLayout from '~/layouts/BaseLayout.astro';
-import Placeholder from '~/components/Placeholder.astro';
+import PublicationList from '~/components/PublicationList.astro';
+import { getPublications, termLabel } from '~/lib/content';
+import { withBase } from '~/lib/paths';
+import profile from '~/data/profile.json';
+const publications = await getPublications();
+const teaching = await getCollection('teaching', ({ data }) => !data.draft);
 ---
-
-<BaseLayout
-  title="CV | Stephen Steinle"
-  description="Curriculum vitae for Stephen Steinle."
->
-  <h1>CV</h1>
-  <div class="prose">
-    <Placeholder note="HTML curriculum vitae and the downloadable PDF at /cv/stephen-steinle-cv.pdf. Both are Phase 2 inputs; the PDF has not been supplied yet." />
-  </div>
+<BaseLayout title="CV | Stephen Steinle" description="Stephen Steinle's education, research and industry experience, publications, teaching, skills, and honors.">
+  <h1>Curriculum Vitae</h1>
+  <p class="page-intro">{profile.name} &middot; {profile.location}</p>
+  <ul class="inline-links">
+    <li><a href={withBase('/cv/stephen-steinle-cv.pdf')} download>Download CV (PDF)</a></li>
+    <li><a href={'mailto:' + profile.email}>{profile.email}</a></li>
+  </ul>
+  <section class="page-section">
+    <h2>Education</h2>
+    <ul class="entry-list">
+      {profile.education.map((item) => <li><h3>{item.degree}</h3><p>{item.institution}</p><p class="entry-meta">{item.date}</p></li>)}
+    </ul>
+  </section>
+  <section class="page-section">
+    <h2>Research and Professional Experience</h2>
+    <ul class="entry-list">
+      {profile.experience.map((item) => <li><h3>{item.role}</h3><p>{item.organization}</p><p class="entry-meta">{item.dates}</p><ul class="experience-details">{item.details.map((detail) => <li>{detail}</li>)}</ul></li>)}
+    </ul>
+  </section>
+  <section class="page-section">
+    <h2>Teaching</h2>
+    <ul class="entry-list">
+      {teaching.map(({ data }) => <li><h3>{data.course}</h3><p>{data.role} &middot; {data.institution}</p><p class="entry-meta">{termLabel(data.term)}</p></li>)}
+    </ul>
+  </section>
+  <section class="page-section">
+    <h2>Publications</h2>
+    <PublicationList publications={publications} compact />
+  </section>
+  <section class="page-section prose">
+    <h2>Technical Skills</h2>
+    <dl class="skills-list">{profile.skills.map((skill) => <Fragment><dt>{skill.area}</dt><dd>{skill.items.join(', ')}</dd></Fragment>)}</dl>
+  </section>
+  <section class="page-section">
+    <h2>Honors and Service</h2>
+    <ul class="honors-list">
+      {profile.honors.map((honor) => <li>{honor.name} &middot; {honor.date}</li>)}
+      {profile.service.map((item) => <li>{item}</li>)}
+    </ul>
+  </section>
 </BaseLayout>
+<style>
+  .experience-details { margin-top: 0.75rem; max-width: var(--max-width-prose); padding-left: 1.25rem; }
+  .experience-details li + li { margin-top: 0.5rem; }
+  .skills-list, .honors-list { margin-top: 1.25rem; }
+  dt { font-weight: 600; }
+  dd + dt { margin-top: 1rem; }
+  .honors-list { padding-left: 1.25rem; }
+</style>

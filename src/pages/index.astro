@@ -1,131 +1,51 @@
 ---
-/**
- * Homepage. See Section 5.
- *
- * Establishes who Stephen is, what he researches, what he is working on, and
- * where to find his work. The publication and project blocks are wired to
- * content collections in Slices 2 and 3; here they are marked placeholders.
- */
+import { getCollection } from 'astro:content';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import SectionHeading from '~/components/SectionHeading.astro';
 import SocialLinks from '~/components/SocialLinks.astro';
-import Placeholder from '~/components/Placeholder.astro';
+import PublicationList from '~/components/PublicationList.astro';
+import ProjectList from '~/components/ProjectList.astro';
 import { SITE, AFFILIATION } from '~/consts';
+import profile from '~/data/profile.json';
 import { withBase } from '~/lib/paths';
-
-/**
- * Research areas from Section 5. These are topic labels, not descriptions, so
- * they state no findings and require no verification. Full descriptions live on
- * the Research page and are a Phase 2 input.
- */
-const researchAreas = [
-  'Large Language Model Reasoning',
-  'Cognitive Modeling of LLMs',
-  'Document Understanding',
-  'AI Agents',
-];
+import { getPublications } from '~/lib/content';
+const publications = (await getPublications()).filter(({ data }) => data.selected);
+const research = (await getCollection('research', ({ data }) => !data.draft)).sort((a, b) => a.data.order - b.data.order);
+const projects = (await getCollection('projects', ({ data }) => !data.draft && data.selected)).sort((a, b) => a.data.order - b.data.order);
 ---
-
 <BaseLayout title={SITE.homeTitle}>
   <section class="hero">
-    <h1>Stephen Steinle</h1>
-    <p class="descriptor">
-      Ph.D. Researcher in Computer Science and Artificial Intelligence
-    </p>
-
+    <p class="eyebrow">Natural Language Processing &middot; Cognitive Modeling</p>
+    <h1>{profile.name}</h1>
+    <p class="descriptor">{profile.role}</p>
     <ul class="affiliation">
       <li>{AFFILIATION.lab}</li>
       <li>{AFFILIATION.college}</li>
-      <li>{AFFILIATION.university}</li>
+      <li>{AFFILIATION.university} &middot; {profile.location}</li>
     </ul>
-
     <SocialLinks includeCv />
-
-    <div class="bio prose">
-      <Placeholder
-        note="Professional biography. Two or three sentences covering research focus, current work, and background. Awaiting final wording."
-      />
-    </div>
+    <div class="bio prose">{profile.bio.map((paragraph) => <p>{paragraph}</p>)}</div>
   </section>
-
-  <section>
-    <SectionHeading title="Current Research" href={withBase('/research')} linkLabel="All research" />
-    <ul class="areas">
-      {
-        researchAreas.map((area) => (
-          <li>
-            <a href={withBase('/research')}>{area}</a>
-          </li>
-        ))
-      }
+  <section class="page-section">
+    <SectionHeading title="Research" href={withBase('/research')} linkLabel="All research" />
+    <ul class="research-links">
+      {research.map(({ id, data }) => <li><a href={withBase('/research') + '#' + id}>{data.title}</a></li>)}
     </ul>
   </section>
-
-  <section>
+  <section class="page-section">
     <SectionHeading title="Selected Publications" href={withBase('/publications')} linkLabel="All publications" />
-    <Placeholder
-      note="Selected publications. Renders from the publications collection once verified bibliographic metadata is added."
-    />
+    <PublicationList publications={publications} compact />
   </section>
-
-  <section>
+  <section class="page-section">
     <SectionHeading title="Selected Projects" href={withBase('/projects')} linkLabel="All projects" />
-    <Placeholder
-      note="Selected projects. Renders from the projects collection once project descriptions are added."
-    />
+    <ProjectList projects={projects} />
   </section>
 </BaseLayout>
-
 <style>
-  section + section {
-    margin-top: calc(var(--space-unit) * 16);
-  }
-
-  .hero h1 {
-    margin-bottom: calc(var(--space-unit) * 2);
-  }
-
-  .descriptor {
-    max-width: var(--max-width-prose);
-    color: var(--text);
-    font-size: 1.125rem;
-  }
-
-  .affiliation {
-    margin-block: calc(var(--space-unit) * 5);
-    padding: 0;
-    list-style: none;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-
-  .bio {
-    margin-top: calc(var(--space-unit) * 6);
-  }
-
-  .areas {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    gap: calc(var(--space-unit) * 3);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .areas a {
-    display: block;
-    padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 4);
-    background-color: var(--surface);
-    border: var(--border-width) solid var(--border);
-    border-radius: var(--radius);
-    color: var(--text);
-    font-size: 0.95rem;
-    text-decoration: none;
-  }
-
-  .areas a:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
+  .hero h1 { margin-block: 0.5rem; font-size: 2.35rem; }
+  .descriptor { font-size: 1.125rem; }
+  .affiliation { margin-block: 1.25rem; padding: 0; list-style: none; color: var(--text-muted); font-size: 0.95rem; }
+  .bio { margin-top: 1.5rem; }
+  .bio p + p { margin-top: 1rem; }
+  .research-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem 2rem; padding-left: 1.25rem; }
 </style>

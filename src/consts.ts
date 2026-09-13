@@ -5,7 +5,7 @@ export const SITE = {
   /** Used as the homepage <title>. See Section 17. */
   homeTitle: 'Stephen Steinle | AI & Computer Science Researcher',
   description:
-    'Personal site of Stephen Steinle, Ph.D. researcher in computer science and artificial intelligence at the University of South Florida.',
+    'Stephen Steinle is a computer science Ph.D. student at the University of South Florida researching strategic reasoning, natural language processing, and cognitive modeling.',
   /** Must match `site` in astro.config.mjs. */
   origin: 'https://stephensteinle.com',
   ogImage: '/og-default.png',
@@ -61,16 +61,10 @@ export interface SocialLink {
   href: string;
 }
 
-/**
- * Only links with a verified URL belong here. A dead or invented href is worse
- * than an absent one, so missing profiles are omitted rather than guessed.
- *
- * Outstanding, tracked as Phase 2 inputs in Section 23:
- *   - Google Scholar profile URL
- *   - LinkedIn profile URL
- *   - Contact email address
- *   - ORCID, if applicable
- */
+/** Public profiles verified against the resume and Google Scholar. */
 export const SOCIAL_LINKS: readonly SocialLink[] = [
+  { label: 'Email', href: 'mailto:ssteinle@usf.edu' },
+  { label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=lN4H6FoAAAAJ&hl=en' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/stephen-steinle' },
   { label: 'GitHub', href: 'https://github.com/ssteinle' },
 ];
